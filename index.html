@@ -22,6 +22,12 @@
       <ul>
         <li ng-repeat="name in names | orderBy: 'name'">{{ name | uppercase }}</li>
       </ul>
+
+      <!-- using filter to search -->
+      <input type="text" ng-model="test" />
+      <ul>
+        <li ng-repeat="name in names | filter: test">{{ name | uppercase }}</li>
+      </ul>
     </div>
 
     <script src="myApp.js"></script>
