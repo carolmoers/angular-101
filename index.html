@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
   <body>
     <div ng-app="myApp" ng-controller="myController">
       <form name="form">
         <p>Name : <input type="text" ng-model="name"></p>
-        <p>Email : <input type="email" name="email" ng-model="email"></p>
+        <p>Email : <input type="email" name="email" ng-model="email" required></p>
         <span ng-show="form.email.$error.email">Email inválido</span>
+        Status <br/>
+        Valid: {{form.email.$valid}}<br/>
+        Dirty: {{form.email.$dirty}}<br/>
+        Touched: {{form.email.$touched}}<br/>
       </form>
 
       <h1>Hello {{name}}</h1>
       <span my-directive></span>
 
       <ul>
-        <li ng-repeat="name in names">{{name}}</li>
+        <li ng-repeat="name in names | orderBy: 'name'">{{ name | uppercase }}</li>
       </ul>
     </div>
 
