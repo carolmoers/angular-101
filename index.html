@@ -2,6 +2,7 @@
 <html lang="en-US">
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -17,6 +18,7 @@
       </form>
 
       <h1>Hello {{name}}</h1>
+
       <span my-directive></span>
 
       <ul>
@@ -35,14 +37,19 @@
           <th ng-click="orderByMe('country')">Country</th>
         </tr>
         <tr ng-repeat="x in people | orderBy:myOrderBy">
-          <td>{{x.name}}</td>
+          <td>{{x.name | myFormat}}</td>
           <td>{{x.country}}</td>
         </tr>
       </table>
+
+      <ul>
+        <li ng-repeat="customer in customers">{{ customer.Name }}</li>
+      </ul>
     </div>
 
     <script src="myApp.js"></script>
     <script src="myController.js"></script>
+    <script src="myFilter.js"></script>
     <script src="myDirective.js"></script>
   </body>
 </html>

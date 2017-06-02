@@ -1,5 +1,5 @@
 app.controller("myController",
-  function($scope) {
+  function($scope, $http) {
     $scope.name = "Carol";
     $scope.names = ["Carol", "Desi", "Luiz", "Marcelo"];
 
@@ -18,4 +18,8 @@ app.controller("myController",
     $scope.orderByMe = function(x) {
       $scope.myOrderBy = x;
     }
+
+    $http.get("https://www.w3schools.com/angular/customers.php").then(function(response) {
+        $scope.customers = response.data.records;
+    });
 });
